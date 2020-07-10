@@ -3,21 +3,43 @@ class EventSourcer():
 
     def __init__(self):
         self.value = 0
-
+        arr=[]
+        count=0
+        max=0
+        arr[0]=0
     def add(self, num: int):
-        pass
+        arr[count+1]=arr[count]+num
+        max=count+1
+        count=count+1;
+        print("value: "+str(arr[count]))
 
     def subtract(self, num: int):
-        pass
+        arr[count + 1] = arr[count] - num
+        max=count+1
+        count=count+1
+        print("value: "+str(arr[count]))
 
     def undo(self):
-        pass
+        if(count-1>=0):
+            count=count-1
+        print("value: "+str(arr[count]))
 
     def redo(self):
-        pass
+        if(count+1<=max):
+            count=count+1
+        print("value: "+str(arr[count]))
 
     def bulk_undo(self, steps: int):
-        pass
+        if(count-steps>=0):
+            count=count-steps
+            print("value: "+str(arr[count]))
+        else:
+            print("value: "+str(arr[0]))
+
 
     def bulk_redo(self, steps: int):
-        pass
+        if(count+steps<=max):
+            count=count+steps
+            print("value: "+str(arr[count]))
+        else:
+            print("value: "+str(arr[max]))
